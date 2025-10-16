@@ -1,6 +1,9 @@
 public class Hero {
     private String name;
     private String currentSkill;
+    private String[] journal = new String[5];
+    private int journalCount = 0;
+
 
     public Hero(String name) {
         this.name = name;
@@ -18,14 +21,22 @@ public class Hero {
     public String getCurrentSkill() {
         return currentSkill;
     }
+    
+    public boolean addJournalEntry(String fact) {
+        if (journalCount < journal.length) {
+            journal[journalCount++] = fact;
+            return true;
+        } else {
+            return false;
+        }
+     }
 
     public void setCurrentSkill(String currentSkill) {
         this.currentSkill = currentSkill;
     }
 
     public void readBook (Book book) {
-        currentSkill = book.getSkillToLearn();
-        System.out.println(this.name + " has read " + book.getTitle() + " and now knows " + currentSkill);
+        book.doRead(this);
     }
 
     public void useSkill (String skillName) {
@@ -39,4 +50,16 @@ public class Hero {
     public void printDetails() {
         System.out.println("Hero name: '" + name + "', equipped skill: " + currentSkill);
     }
+
+    public void printJournal() {
+        System.out.println("===" + name + " 's Journal ===");
+        if (journalCount == 0) {
+            System.out.println("Journal is empty!");
+        } else {
+            for (int i = 0; i < journalCount; i++) {
+                System.out.println((i+1) + " . " + journal[i]);
+            }
+        }
+    }
 }
+

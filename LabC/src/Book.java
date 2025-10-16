@@ -25,9 +25,15 @@ public class Book {
     public void printDetails() {
         System.out.println(toString());
     }
+
+    @Override
      public String toString(){
         return "'" + title + "' by " + author + " (" + numPages + "pp):  ";
      }
      
+     public void doRead(Hero hero) {
+        System.out.println(hero.getName() + " has read" + title);
+        
+     }
 }
 

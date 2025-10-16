@@ -13,5 +13,11 @@ public class SkillBook extends Book {
     public String toString(){
         return super.toString() + skillToLearn ;
      }
-     
+     @Override
+     public void doRead(Hero hero) {
+        hero.setCurrentSkill(skillToLearn);
+        System.out.println(hero.getName() + " has read " + getTitle() + " and learned " + skillToLearn);
+    
+     }
+
 }
